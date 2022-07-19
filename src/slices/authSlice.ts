@@ -15,7 +15,7 @@ export interface AuthState {
   };
 }
 
-interface AuthenticateResult {
+export interface AuthenticateResult {
   user: {
     id: number;
     email: string;

@@ -9,7 +9,11 @@ import LoginPage from "../pages/LoginPage";
 import ProfessionalHomePage from "../pages/ProfessionalHomePage";
 import RequiredAuth from "./RequiredAuth";
 
-function AppRoutes() {
+interface AppRoutesProps {
+
+}
+
+const AppRoutes: React.FC<AppRoutesProps> = () => {
     return (
         <Routes>
             <Route path="/" element={<LayoutDefault />} >

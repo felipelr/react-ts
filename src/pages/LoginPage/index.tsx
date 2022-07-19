@@ -40,8 +40,8 @@ const LoginPage: React.FC<LoginPageProps> = (props) => {
                         {message && <ErrorText>{message}</ErrorText>}
                         <LoginTitle>{strings.title}</LoginTitle>
                         <FormContainer>
-                            <InputEmail label="Email" value={email} onChange={(event => setEmail(old => event.target.value))} />
-                            <InputPassword label="Senha" value={password} onChange={(event => setPassword(old => event.target.value))} />
+                            <InputEmail label="Email" name="Email" value={email} onChange={(event => setEmail(old => event.target.value))} />
+                            <InputPassword id="LoginPassword" label="Senha" name="Senha" value={password} onChange={(event => setPassword(old => event.target.value))} />
                             <ButtonYellow onClick={handleClickLogin}>{strings.buttonLogin}</ButtonYellow>
                             <ButtonLinkUnderline>{strings.buttonForgotPassword}</ButtonLinkUnderline>
                             <ButtonLink>{strings.newUser}</ButtonLink>
