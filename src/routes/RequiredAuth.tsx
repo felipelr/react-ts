@@ -1,10 +1,14 @@
 import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
-import useAppSelector from "../hooks/useAppSelector";
+import { useIsAuth } from "../hooks/useIsAuth";
+import { getToken } from "../slices/authSlice";
 
 const RequiredAuth = ({ children }: { children: JSX.Element }) => {
-    let { isAuth } = useAppSelector(state => state.auth)
+    const token = getToken();
+    let isAuth = useIsAuth(token)
     let location = useLocation();
+
+    console.log('isAuth', isAuth);
 
     if (!isAuth) {
         // Redirect them to the /login page, but save the current location they were
