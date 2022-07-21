@@ -7,7 +7,7 @@ export const ItemTitle = styled.h1`
     font-weight: normal;
 `
 
-export const ItemDescription = styled.p`
+export const ItemDescription = styled.span`
     color: ${black};
     font-size: .8em;
     font-weight: normal;

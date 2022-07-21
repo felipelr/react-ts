@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { List } from "@mui/material";
 import useAppSelector from "../../hooks/useAppSelector";
-import { ClientHomeContainer, Welcome, Title, FavoriteProfessionals } from "./styles";
-import strings from "./strings";
 import CardActions from "../../components/CardActions";
 import ProfessionalListItem from "../../components/ProfessionalListItem";
+import { Professional } from "../../slices/professionalSlice";
+import axiosApi from "../../services/axiosApi";
+import useFetch from "../../hooks/useFetch";
+
+import { ClientHomeContainer, Welcome, Title, FavoriteProfessionals } from "./styles";
+import strings from "./strings";
 
 export interface ClientHomePageProps { }
 
-const favorities = [{ name: 'Felipe', id: "teste1" }, { name: 'Rodrigo', id: "teste2" }, { name: 'Carlos', id: "teste3" }]
+interface FavoritiesResult {
+    professionals: Professional[];
+}
 
 const ClientHomePage: React.FC<ClientHomePageProps> = (props) => {
-    const { client } = useAppSelector(state => state.client)
+    const { user } = useAppSelector(state => state.auth)
+    const [favorities] = useFetch<FavoritiesResult>(`/v1/professionals/favorities/${user?.id}`)
+
+    useEffect(() => {
+
+    }, [])
 
     const handleClickHireStraber = () => {
         console.log('teste');
@@ -22,13 +33,13 @@ const ClientHomePage: React.FC<ClientHomePageProps> = (props) => {
             <Welcome>{strings.welcome}</Welcome>
             <Title>{strings.title}</Title>
             <CardActions title={strings.cardTitle} description={strings.cardDesc} onClick={handleClickHireStraber} />
-            {favorities.length > 0 && <FavoriteProfessionals>{strings.favoriteProfessionals}</FavoriteProfessionals>}
+            {favorities && <FavoriteProfessionals>{strings.favoriteProfessionals}</FavoriteProfessionals>}
             <List>
-            {favorities.map((item) => {
-                return (
-                    <ProfessionalListItem />
-                )
-            })}
+                {favorities && favorities.professionals.map((item) => {
+                    return (
+                        <ProfessionalListItem key={item.id} details={item}/>
+                    )
+                })}
             </List>
         </ClientHomeContainer>
     )
