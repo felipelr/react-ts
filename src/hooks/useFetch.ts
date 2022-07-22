@@ -13,7 +13,6 @@ function useFetch<T>(url: string) {
             }
         }).then((axiosResult) => {
             const { data } = axiosResult;
-            console.log('data', data);
             setData(data)
         });
     }, [url]);

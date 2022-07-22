@@ -3,13 +3,11 @@ import React from "react";
 import { Professional } from "../../slices/professionalSlice";
 import { ItemTitle, ItemDescription } from "./styles";
 
-export interface ProfessionalListItemProps { 
+export interface ProfessionalListItemProps {
     details: Professional;
 }
 
-const ProfessionalListItem: React.FC<ProfessionalListItemProps> = ({details}) => {
-
-    console.log('details', details)
+const ProfessionalListItem: React.FC<ProfessionalListItemProps> = ({ details }) => {
 
     const handleItemClick = () => {
         console.log('item clicked');

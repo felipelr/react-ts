@@ -1,28 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { List } from "@mui/material";
-import useAppSelector from "../../hooks/useAppSelector";
+import React from "react";
 import CardActions from "../../components/CardActions";
-import ProfessionalListItem from "../../components/ProfessionalListItem";
-import { Professional } from "../../slices/professionalSlice";
-import axiosApi from "../../services/axiosApi";
-import useFetch from "../../hooks/useFetch";
+import useAppSelector from "../../hooks/useAppSelector";
 
-import { ClientHomeContainer, Welcome, Title, FavoriteProfessionals } from "./styles";
+import { ClientHomeContainer, Welcome, Title } from "./styles";
 import strings from "./strings";
+import FavoritiesList from "../../components/FavoritiesList";
 
 export interface ClientHomePageProps { }
 
-interface FavoritiesResult {
-    professionals: Professional[];
-}
-
 const ClientHomePage: React.FC<ClientHomePageProps> = (props) => {
     const { user } = useAppSelector(state => state.auth)
-    const [favorities] = useFetch<FavoritiesResult>(`/v1/professionals/favorities/${user?.id}`)
-
-    useEffect(() => {
-
-    }, [])
 
     const handleClickHireStraber = () => {
         console.log('teste');
@@ -33,14 +20,7 @@ const ClientHomePage: React.FC<ClientHomePageProps> = (props) => {
             <Welcome>{strings.welcome}</Welcome>
             <Title>{strings.title}</Title>
             <CardActions title={strings.cardTitle} description={strings.cardDesc} onClick={handleClickHireStraber} />
-            {favorities && <FavoriteProfessionals>{strings.favoriteProfessionals}</FavoriteProfessionals>}
-            <List>
-                {favorities && favorities.professionals.map((item) => {
-                    return (
-                        <ProfessionalListItem key={item.id} details={item}/>
-                    )
-                })}
-            </List>
+            {user && <FavoritiesList user={user} />}
         </ClientHomeContainer>
     )
 }
