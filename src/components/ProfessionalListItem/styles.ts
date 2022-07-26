@@ -12,3 +12,8 @@ export const ItemDescription = styled.span`
     font-size: .8em;
     font-weight: normal;
 `
+
+export const ContainerDescription = styled.div`
+    display: flex;
+    flex-direction: column;
+`

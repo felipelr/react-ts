@@ -1,10 +1,16 @@
-import { Avatar, ListItem, ListItemAvatar, ListItemButton, ListItemText, Divider } from "@mui/material";
+import { Avatar, ListItem, ListItemAvatar, ListItemButton, ListItemText, Divider, Rating } from "@mui/material";
 import React from "react";
-import { Professional } from "../../slices/professionalSlice";
-import { ItemTitle, ItemDescription } from "./styles";
+import { ItemTitle, ItemDescription, ContainerDescription } from "./styles";
 
 export interface ProfessionalListItemProps {
-    details: Professional;
+    details: {
+        id: number;
+        name: string;
+        description: string;
+        photo: string;
+        rate: number,
+        rate_count: number,
+    }
 }
 
 const ProfessionalListItem: React.FC<ProfessionalListItemProps> = ({ details }) => {
@@ -27,9 +33,13 @@ const ProfessionalListItem: React.FC<ProfessionalListItemProps> = ({ details }) 
                             </ItemTitle>
                         }
                         secondary={
-                            <ItemDescription>
-                                {details.description}
-                            </ItemDescription>
+                            <ContainerDescription>
+                                <ItemDescription>
+                                    {details.description}
+                                </ItemDescription>
+                            
+                                <Rating name="read-only" value={details.rate} size="small" readOnly />
+                            </ContainerDescription>
                         }
                     />
                 </ListItemButton>
