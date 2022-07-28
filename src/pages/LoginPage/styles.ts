@@ -2,6 +2,11 @@ import styled from "styled-components";
 import { Button, TextField } from "@mui/material";
 import { light_gray, red, strab_blue } from "../../utils/colors";
 
+const phone = '360px';
+const tablet = '768px';
+const desktop = '1366px';
+const large_desktop = '1920px';
+
 export const LoginContainer = styled.div`
   background: linear-gradient(0deg, ${light_gray} 50%, ${strab_blue} 50%);
   height: 100%;
@@ -26,15 +31,22 @@ export const LoginTitle = styled.h1`
 
 export const LoginCenterContainer = styled.div`
   display: flex;
-  width: 80vw;
   flex-direction: column;
 
-  @media (min-width: 720px) {
-    width: 35vw;
+  @media (max-width: ${phone}) {
+    width: 90vw;
   }
 
-  @media (min-width: 1024px) {
-    width: 25vw;
+  @media (min-width: ${phone}) and (max-width: ${tablet}) {
+    width: 80vw;
+  }
+
+  @media (min-width: ${tablet}) and (max-width: ${desktop}) {
+    width: 50vw;
+  }
+
+  @media (min-width: ${large_desktop}) {
+    width: 30vw;
   }
 `;
 
@@ -69,10 +81,12 @@ export const ButtonLinkUnderline = styled(ButtonLink).attrs((props) => ({
 export const InputEmail = styled(TextField).attrs((props) => ({
   variant: "outlined",
   required: true,
+  sx: {width: '80%'}
 }))``;
 
 export const InputPassword = styled(TextField).attrs((props) => ({
   variant: "outlined",
   type: "password",
   required: true,
+  sx: {width: '80%'}
 }))``;

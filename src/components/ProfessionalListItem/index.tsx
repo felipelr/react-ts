@@ -8,8 +8,8 @@ export interface ProfessionalListItemProps {
         name: string;
         description: string;
         photo: string;
-        rate: number,
-        rate_count: number,
+        rate: number;
+        rate_count: number;
     }
 }
 
@@ -33,14 +33,14 @@ const ProfessionalListItem: React.FC<ProfessionalListItemProps> = ({ details }) 
                             </ItemTitle>
                         }
                         secondary={
-                            <ContainerDescription>
+                            <>
                                 <ItemDescription>
                                     {details.description}
                                 </ItemDescription>
-                            
                                 <Rating name="read-only" value={details.rate} size="small" readOnly />
-                            </ContainerDescription>
+                            </>
                         }
+                        secondaryTypographyProps={{style:{display: 'flex', flexDirection: 'column'}}}
                     />
                 </ListItemButton>
             </ListItem>

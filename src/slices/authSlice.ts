@@ -75,6 +75,9 @@ export const authSlice = createSlice({
       state.isAuth = action.payload.isAuth;
       state.user = action.payload.user;
       state.token = action.payload.token;
+      state.userType = action.payload.user.professional
+        ? "professional"
+        : "client";
     }
   },
   extraReducers: (builder) => {
@@ -99,19 +102,9 @@ export const authSlice = createSlice({
         state.userType = action.payload.user.professional
           ? "professional"
           : "client";
-
-          saveToken(action.payload.token);
       });
   },
 });
-
-const saveToken = (token: string): void => {
-  localStorage.setItem('accessToken', token);
-}
-
-export const getToken = (): string | null => {
-  return localStorage.getItem('accessToken');
-}
 
 export const { logout, setAuthentication } = authSlice.actions;
 

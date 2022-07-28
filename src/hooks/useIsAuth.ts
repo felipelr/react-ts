@@ -3,7 +3,6 @@ import axiosApi from "../services/axiosApi";
 import { setAuthentication } from "../slices/authSlice";
 import { Client, setClient } from "../slices/clientSlice";
 import { Professional, setProfessional } from "../slices/professionalSlice";
-import useAppSelector from "./useAppSelector";
 import useAppDispatch from "./useAppDispatch";
 
 interface UserGet {
@@ -14,21 +13,20 @@ interface UserGet {
     professional?: Professional;
 }
 
-export const useIsAuth = (token: string | null) => {
-    const { isAuth } = useAppSelector(state => state.auth)
-    const [isAuthToken, setIsAuthToken] = useState(() => token !== null);
+export const useIsAuth = (isAuth: boolean, token: string) => {
+    const [isAuthToken, setIsAuthToken] = useState(() => {
+        return token ? true : false
+    });
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if (isAuth && token) {
+        if (isAuth && token)
             setIsAuthToken(true);
-        }
-        else {
-            validateToken();
-        }
-    }, [isAuth, token])
+        else
+            validateToken(token);
+    }, [isAuth])
 
-    const validateToken = async () => {
+    const validateToken = async (token: string) => {
         if (token) {
             try {
                 const { data } = await axiosApi.get<UserGet>("/v1/users/validateToken", {
@@ -37,7 +35,7 @@ export const useIsAuth = (token: string | null) => {
                     }
                 });
 
-                dispatch(setAuthentication({ isAuth: true, token: token, user: { id: data.id, email: data.email } }))
+                dispatch(setAuthentication({ isAuth: true, token: token, user: { id: data.id, email: data.email, client: data.client, professional: data.professional } }))
 
                 if (data.professional)
                     dispatch(setProfessional(data.professional));

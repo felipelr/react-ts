@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import LayoutClient from "../components/layouts/LayoutClient";
 import LayoutDefault from "../components/layouts/LayoutDefault";
 import LayoutProfessional from "../components/layouts/LayoutProfessional";
+import CategoriesPage from "../pages/CategoriesPage";
 import ClientHomePage from "../pages/ClientHomePage";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
@@ -26,6 +27,7 @@ const AppRoutes: React.FC<AppRoutesProps> = () => {
                 </RequiredAuth>
             } >
                 <Route index element={<ClientHomePage />} />
+                <Route path="/client/categories" element={<CategoriesPage />} />
             </Route>
             <Route path="/professional" element={
                 <RequiredAuth>

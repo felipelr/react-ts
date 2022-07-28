@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import { Card, CardContent, LinearProgress } from "@mui/material";
 import strings from "./strings";
 import { ErrorText, InputEmail, InputPassword, FormContainer, ButtonLink, ButtonLinkUnderline, ButtonYellow, LoginCenterContainer, LoginContainer, LoginTitle, StrabImg } from "./styles";
@@ -13,7 +14,8 @@ export interface LoginPageProps { }
 const LoginPage: React.FC<LoginPageProps> = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { userType, loading, isAuth, message } = useAppSelector(state => state.auth)
+    const { userType, loading, isAuth, message, token } = useAppSelector(state => state.auth)
+    const [cookies, setCookie, removeCookie] = useCookies(['cookie-jwt-token']);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -25,6 +27,12 @@ const LoginPage: React.FC<LoginPageProps> = (props) => {
                 navigate('/client');
         }
     }, [isAuth])
+
+    useEffect(() => {
+        if(token){
+            setCookie('cookie-jwt-token', token, { path: '/' });
+        }
+    }, [token])
 
     const handleClickLogin = () => {
         dispatch(fetchLogin({ email, password }));

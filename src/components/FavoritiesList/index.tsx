@@ -1,7 +1,6 @@
 import React from "react";
 import { List } from "@mui/material";
 import ProfessionalListItem from "../../components/ProfessionalListItem";
-import { Professional } from "../../slices/professionalSlice";
 import useFetch from "../../hooks/useFetch";
 import { FavoriteProfessionals } from "./styles";
 import strings from "./strings";
@@ -12,8 +11,17 @@ export interface FavoritiesListProps {
     };
  }
 
+ interface Details {
+    id: number;
+    name: string;
+    description: string;
+    photo: string;
+    rate: string;
+    rate_count: string;
+ }
+
 interface FavoritiesResult {
-    professionals: Professional[];
+    professionals: Details[];
 }
 
 const FavoritiesList: React.FC<FavoritiesListProps> = ({user}) => {
@@ -25,7 +33,11 @@ const FavoritiesList: React.FC<FavoritiesListProps> = ({user}) => {
             <List>
                 {favorities && favorities.professionals.map((item) => {
                     return (
-                        <ProfessionalListItem key={item.id} details={item} />
+                        <ProfessionalListItem key={item.id} details={{
+                            ...item, 
+                            rate: parseInt(item.rate), 
+                            rate_count: parseInt(item.rate_count),
+                        }} />
                     )
                 })}
             </List>
