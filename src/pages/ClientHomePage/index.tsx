@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { ClientHomeContainer } from "./styles";
 import strings from "./strings";
 import FavoritiesList from "../../components/FavoritiesList";
-import PageTitle from "../../components/PageTitle";
-import PageDescription from "../../components/PageDescription";
+import PageTitle from "../../components/shared/PageTitle";
+import PageDescription from "../../components/shared/PageDescription";
 
 export interface ClientHomePageProps { }
 

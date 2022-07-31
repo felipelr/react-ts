@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { strab_blue, white } from "../../utils/colors";
+import { strab_blue, white } from "../../../utils/colors";
 import { Button } from "@mui/material";
 
 export const HeaderContainer = styled.div`

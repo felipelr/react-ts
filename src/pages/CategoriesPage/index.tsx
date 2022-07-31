@@ -1,9 +1,11 @@
 import React from "react";
 import { CategoriesContainer } from "./styles";
 import strings from "./strings";
-import PageTitle from "../../components/PageTitle";
-import PageDescription from "../../components/PageDescription";
+import PageTitle from "../../components/shared/PageTitle";
+import PageDescription from "../../components/shared/PageDescription";
 import CategoriesList from "../../components/CategoriesList";
+import CategoriesFilter from "../../components/CategoriesFilter";
+import { CategoriesProvider } from "../../contexts/CategoriesContext";
 
 export interface CategoriesPageProps { }
 
@@ -13,7 +15,10 @@ const CategoriesPage: React.FC<CategoriesPageProps> = (props) => {
         <CategoriesContainer>
             <PageDescription>{strings.description}</PageDescription>
             <PageTitle>{strings.title}</PageTitle>
-            <CategoriesList />
+            <CategoriesProvider>
+                <CategoriesFilter />
+                <CategoriesList />
+            </CategoriesProvider>
         </CategoriesContainer>
     )
 }

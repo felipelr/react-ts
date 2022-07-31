@@ -3,10 +3,10 @@ import { HeaderContainer, StrabLogo, ContainerInfo, UserInfo, ButtonLink } from 
 import assets from "./assets";
 import strings from "./strings";
 import { useNavigate, useLocation } from "react-router-dom";
-import useAppSelector from "../../hooks/useAppSelector";
+import useAppSelector from "../../../hooks/useAppSelector";
 import LogoutIcon from '@mui/icons-material/Logout';
-import useAppDispatch from "../../hooks/useAppDispatch";
-import { logout } from "../../slices/authSlice";
+import useAppDispatch from "../../../hooks/useAppDispatch";
+import { logout } from "../../../slices/authSlice";
 import { useCookies } from "react-cookie";
 
 export interface HeaderProps { }

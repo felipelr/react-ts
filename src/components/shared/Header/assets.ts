@@ -1,4 +1,4 @@
-import strab_branco from "../../assets/strabbranco.png";
+import strab_branco from "../../../assets/strabbranco.png";
 
 const assets = {
   strab_branco,
