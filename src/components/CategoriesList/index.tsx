@@ -39,7 +39,7 @@ const CategoriesList: React.FC<CategoriesListProps> = (props) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={1} >
-                {categoriesContext?.filteredCategories && categoriesContext?.filteredCategories.map((item, index) => {
+                {categoriesContext.state.filteredCategories && categoriesContext.state.filteredCategories.map((item, index) => {
                     return (
                         <Grid item xs={12} md={4} lg={3} key={item.description}>
                             <CategoryContainer backgroundColor={renderColor(index)}>
