@@ -78,6 +78,9 @@ export const authSlice = createSlice({
       state.userType = action.payload.user.professional
         ? "professional"
         : "client";
+    },
+    setUserType: (state, action) => {
+      state.userType = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -106,6 +109,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { logout, setAuthentication } = authSlice.actions;
+export const { logout, setAuthentication, setUserType } = authSlice.actions;
 
 export default authSlice.reducer;

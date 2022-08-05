@@ -1,6 +1,7 @@
 import { Box, Grid } from "@mui/material";
 import React from "react";
-import { useCategoriesContext } from "../../contexts/CategoriesContext";
+import { useNavigate } from "react-router-dom";
+import { CategoriesActionTypes, useCategoriesContext } from "../../contexts/CategoriesContext";
 import { CategoryContainer, CategoryDescription } from "./styles";
 
 export interface CategoriesListProps { }
@@ -25,6 +26,7 @@ const colorPalette = [
 
 const CategoriesList: React.FC<CategoriesListProps> = (props) => {
     const categoriesContext = useCategoriesContext();
+    const navigate = useNavigate();
 
     const renderColor = (index: number) => {
         if (index < colorPalette.length) {
@@ -36,13 +38,19 @@ const CategoriesList: React.FC<CategoriesListProps> = (props) => {
         }
     }
 
+    const filteredCategories = categoriesContext.state.filter.length >= 3 ? categoriesContext.state.categories.filter(item => item.description.toLowerCase().includes(categoriesContext.state.filter.toLowerCase())) : categoriesContext.state.categories;
+
+    const handleClickCategory = (category_id: number) => {
+        categoriesContext.dispatch({ type: CategoriesActionTypes.UPDATE_SELECTED_CATEGORY_ID, payload: category_id });
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={1} >
-                {categoriesContext.state.filteredCategories && categoriesContext.state.filteredCategories.map((item, index) => {
+                {filteredCategories.map((item, index) => {
                     return (
                         <Grid item xs={12} md={4} lg={3} key={item.description}>
-                            <CategoryContainer backgroundColor={renderColor(index)}>
+                            <CategoryContainer backgroundColor={renderColor(index)} onClick={() => handleClickCategory(item.id)}>
                                 <CategoryDescription>{item.description}</CategoryDescription>
                             </CategoryContainer>
                         </Grid>

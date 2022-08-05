@@ -81,7 +81,7 @@ export const ButtonLinkUnderline = styled(ButtonLink).attrs((props) => ({
 export const InputEmail = styled(TextField).attrs((props) => ({
   variant: "outlined",
   required: true,
-  sx: {width: '80%'}
+  sx: { width: '80%', marginBottom: '20px' }
 }))``;
 
 export const InputPassword = styled(TextField).attrs((props) => ({

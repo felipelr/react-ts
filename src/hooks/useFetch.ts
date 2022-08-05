@@ -7,11 +7,12 @@ import useLocalStorage from "./useLocalStorage";
 import { useCookies } from "react-cookie";
 import { logout } from "../slices/authSlice";
 
-function useFetch<T>(url: string, keyToStore: string = '') {
+function useFetch<T>(url: string, keyToStore: string = ''): [T | null, boolean] {
     const { token } = useAppSelector(state => state.auth)
     const [data, setData] = useState<T | null>(null);
-    const { storedValue, setValue } = useLocalStorage<T>(keyToStore);
+    const [storedValue, setValue ] = useLocalStorage<T>(keyToStore);
     const [cookies, setCookie, removeCookie] = useCookies(['cookie-jwt-token']);
+    const [loading, setLoading] = useState(true);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
@@ -38,11 +39,13 @@ function useFetch<T>(url: string, keyToStore: string = '') {
                     navigate("/");
                     removeCookie("cookie-jwt-token");
                 }
+            }).finally(() => {
+                setLoading(false);
             })
         }
-    }, [url]);
+    }, []);
 
-    return [data];
+    return [data, loading];
 };
 
 export default useFetch;

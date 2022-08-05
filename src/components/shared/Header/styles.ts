@@ -11,7 +11,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const StrabLogo = styled.img`
-  width: 110px;
+  height: 35px;
   :hover{
     cursor: pointer;
   }
@@ -25,9 +25,17 @@ export const ContainerInfo = styled.div`
   flex-grow: 1;
 `
 
+export const ContainerInfoLeft = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+`
+
 export const UserInfo = styled.span`
   color: ${white};
   font-size: 1em;
+  margin-right: 16px;
 `
 
 export const ButtonLink = styled(Button).attrs((props) => ({

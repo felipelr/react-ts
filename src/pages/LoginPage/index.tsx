@@ -29,13 +29,14 @@ const LoginPage: React.FC<LoginPageProps> = (props) => {
     }, [isAuth])
 
     useEffect(() => {
-        if(token){
+        if (token) {
             setCookie('cookie-jwt-token', token, { path: '/' });
         }
     }, [token])
 
     const handleClickLogin = () => {
-        dispatch(fetchLogin({ email, password }));
+        if (email.length > 0 && password.length > 0)
+            dispatch(fetchLogin({ email, password }));
     }
 
     return (
@@ -48,8 +49,23 @@ const LoginPage: React.FC<LoginPageProps> = (props) => {
                         {message && <ErrorText>{message}</ErrorText>}
                         <LoginTitle>{strings.title}</LoginTitle>
                         <FormContainer>
-                            <InputEmail label="Email" name="Email" value={email} onChange={(event => setEmail(old => event.target.value))} />
-                            <InputPassword id="LoginPassword" label="Senha" name="Senha" value={password} onChange={(event => setPassword(old => event.target.value))} />
+                            <InputEmail
+                                label="Email"
+                                name="Email"
+                                value={email}
+                                onChange={(event => setEmail(old => event.target.value))}
+                            />
+                            <InputPassword
+                                id="LoginPassword"
+                                label="Senha"
+                                name="Senha"
+                                value={password}
+                                onChange={(event => setPassword(old => event.target.value))}
+                                onKeyUp={(event) => {
+                                    if (event.key === 'Enter')
+                                        handleClickLogin();
+                                }}
+                            />
                             <ButtonYellow onClick={handleClickLogin}>{strings.buttonLogin}</ButtonYellow>
                             <ButtonLinkUnderline>{strings.buttonForgotPassword}</ButtonLinkUnderline>
                             <ButtonLink>{strings.newUser}</ButtonLink>
