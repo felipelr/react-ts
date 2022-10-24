@@ -5,9 +5,9 @@ import { render } from "../../test-utils";
 import LoginPage from "./";
 import { AuthenticateResult } from "../../slices/authSlice";
 
-const BASE_URL = "https://localhost:5001";
+const BASE_URL = "https://www.strabbrasil.com/wsdev/api";
 export const handlers = [
-  rest.post(`${BASE_URL}/v1/users/login`, (req, res, ctx) => {
+  rest.post(`${BASE_URL}/users/login`, (req, res, ctx) => {
     const user: AuthenticateResult = {
       token: "any_token",
       user: {

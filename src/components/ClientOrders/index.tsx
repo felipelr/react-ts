@@ -32,7 +32,7 @@ interface ClientOrdersResult {
 
 const ClientOrders: React.FC<ClientOrdersProps> = (props) => {
     const { user } = useAppSelector(state => state.auth);
-    const [clientOrders, loadingClientOrders] = useFetch<ClientOrdersResult>(`/v1/clientServiceOrders/user/${user?.id}`);
+    const [clientOrders, loadingClientOrders] = useFetch<ClientOrdersResult>(`/clientServiceOrders/user/${user?.id}`);
 
     if (loadingClientOrders) {
         return (

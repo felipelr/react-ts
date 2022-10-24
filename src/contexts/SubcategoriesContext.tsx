@@ -32,7 +32,7 @@ export const useSubcategoriesContext = () => {
 }
 
 export const SubcategoriesProvider: React.FC<PropsWithChildren<SubcategoriesContextProps>> = ({ category_id, children }) => {
-    const [subcategoriesResult] = useFetch<SubcategoriesResult>(`/v1/subcategories/category/${category_id}`, `cached_subcategories_${category_id}`);
+    const [subcategoriesResult] = useFetch<SubcategoriesResult>(`/subcategories/category/${category_id}`, `cached_subcategories_${category_id}`);
 
     return (
         <SubcategoriesContext.Provider value={{ subcategories: subcategoriesResult?.subcategories } as SubcategoriesContextState}>

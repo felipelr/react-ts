@@ -16,7 +16,7 @@ const HomePage: React.FC<HomePageProps> = (props) => {
                 <ContentContainer>
                     <ContentTitle>{strings.title}</ContentTitle>
                     <ContentDescription>{strings.description}</ContentDescription>
-                    <ButtonYellow>{strings.buttonNewUser}</ButtonYellow>
+                    <ButtonYellow onClick={() => navigate('/new-user')}>{strings.buttonNewUser}</ButtonYellow>
                     <ButtonBlue onClick={() => navigate('/login')}>{strings.buttonLogin}</ButtonBlue>
                 </ContentContainer>
             </CenterContainer>

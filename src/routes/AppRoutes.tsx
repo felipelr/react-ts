@@ -7,6 +7,7 @@ import CategoriesPage from "../pages/CategoriesPage";
 import ClientHomePage from "../pages/ClientHomePage";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
+import NewUserPage from "../pages/NewUserPage";
 import ProfessionalHomePage from "../pages/ProfessionalHomePage";
 import RequiredAuth from "./RequiredAuth";
 
@@ -20,6 +21,7 @@ const AppRoutes: React.FC<AppRoutesProps> = () => {
             <Route path="/" element={<LayoutDefault />} >
                 <Route index element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/new-user" element={<NewUserPage />} />
             </Route>
             <Route path="/client" element={
                 <RequiredAuth>

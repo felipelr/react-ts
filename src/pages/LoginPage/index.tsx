@@ -39,6 +39,10 @@ const LoginPage: React.FC<LoginPageProps> = (props) => {
             dispatch(fetchLogin({ email, password }));
     }
 
+    const handleClickNewUser = () => {
+        navigate('/new-user')
+    }
+
     return (
         <LoginContainer>
             <StrabImg src={assets.strab_branco} alt="Logo" />
@@ -68,7 +72,7 @@ const LoginPage: React.FC<LoginPageProps> = (props) => {
                             />
                             <ButtonYellow onClick={handleClickLogin}>{strings.buttonLogin}</ButtonYellow>
                             <ButtonLinkUnderline>{strings.buttonForgotPassword}</ButtonLinkUnderline>
-                            <ButtonLink>{strings.newUser}</ButtonLink>
+                            <ButtonLink onClick={handleClickNewUser}>{strings.newUser}</ButtonLink>
                         </FormContainer>
                     </CardContent>
                 </Card>

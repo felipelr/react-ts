@@ -71,7 +71,7 @@ const reducer = (state: CategoriesContextState, action: UpdateCategoryFilterPayl
 };
 
 export const CategoriesProvider: React.FC<PropsWithChildren<CategoriesProviderProps>> = ({ children }) => {
-    const [categoriesResult] = useFetch<CategoriesResult>('/v1/categories', 'cached_categories');
+    const [categoriesResult] = useFetch<CategoriesResult>('/categories', 'cached_categories');
     const [contextReducerState, dispatchReducer] = useReducer(reducer, initialState);
 
     useEffect(() => {

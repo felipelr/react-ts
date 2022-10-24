@@ -29,7 +29,7 @@ export const useIsAuth = (isAuth: boolean, token: string) => {
     const validateToken = async (token: string) => {
         if (token) {
             try {
-                const { data } = await axiosApi.get<UserGet>("/v1/users/validateToken", {
+                const { data } = await axiosApi.get<UserGet>("/users/validateToken", {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }

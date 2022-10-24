@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosApi = axios.create({
-  baseURL: "http://localhost:5001",
+  baseURL: "https://www.strabbrasil.com/wsdev/api",
 });
 
 export default axiosApi;
