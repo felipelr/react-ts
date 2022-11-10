@@ -45,7 +45,7 @@ export const fetchLogin = createAsyncThunk(
   ) => {
     try {
       const { data } = await axiosApi.post<AuthenticateResult>(
-        "/users/login",
+        "/v1/users/login",
         { email, password }
       );
 

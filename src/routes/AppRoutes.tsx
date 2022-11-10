@@ -23,20 +23,12 @@ const AppRoutes: React.FC<AppRoutesProps> = () => {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/new-user" element={<NewUserPage />} />
             </Route>
-            <Route path="/client" element={
-                <RequiredAuth>
-                    <LayoutClient />
-                </RequiredAuth>
-            } >
+            <Route path="/client" element={<RequiredAuth><LayoutClient /></RequiredAuth>} >
                 <Route index element={<ClientHomePage />} />
                 <Route path="/client/categories" element={<CategoriesPage />} />
             </Route>
-            <Route path="/professional" element={
-                <RequiredAuth>
-                    <LayoutProfessional />
-                </RequiredAuth>} >
-                <Route index element={<ProfessionalHomePage />
-                } />
+            <Route path="/professional" element={<RequiredAuth><LayoutProfessional /></RequiredAuth>}>
+                <Route index element={<ProfessionalHomePage />} />
             </Route>
         </Routes>
     );

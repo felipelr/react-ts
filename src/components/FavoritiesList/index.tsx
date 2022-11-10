@@ -25,7 +25,7 @@ interface FavoritiesResult {
 }
 
 const FavoritiesList: React.FC<FavoritiesListProps> = ({user}) => {
-    const [favorities, loadingFavorites] = useFetch<FavoritiesResult>(`/professionals/favorities/${user.id}`)
+    const [favorities, loadingFavorites] = useFetch<FavoritiesResult>(`/v1/professionals/favorities/${user.id}`)
 
     return (
         <>

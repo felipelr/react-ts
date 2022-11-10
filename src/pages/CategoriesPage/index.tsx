@@ -1,18 +1,18 @@
 import React from "react";
-import { CategoriesContainer } from "./styles";
 import { CategoriesProvider } from "../../contexts/CategoriesContext";
 import PageContent from "./PageContent";
+import { Container } from "@mui/material";
 
 export interface CategoriesPageProps { }
 
 const CategoriesPage: React.FC<CategoriesPageProps> = (props) => {
 
     return (
-        <CategoriesContainer>
+        <Container maxWidth='lg'>
             <CategoriesProvider>
                 <PageContent />
             </CategoriesProvider>
-        </CategoriesContainer>
+        </Container>
     )
 }
 

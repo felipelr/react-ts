@@ -43,3 +43,10 @@ export const ButtonLink = styled(Button).attrs((props) => ({
   color: "neutral",
   sx: { mt: 2, mb: 2, textDecoration: "underline" },
 }))``;
+
+
+export const ButtonNeutral = styled(Button).attrs((props) => ({
+  variant: "text",
+  color: "neutral",
+  sx: { mt: 2, mb: 2, textDecoration: "none" },
+}))``;
