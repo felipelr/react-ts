@@ -5,9 +5,9 @@ import PageTitle from "../../components/shared/PageTitle";
 import useAppSelector from "../../hooks/useAppSelector";
 import strings from "./strings";
 
-export interface ProfessionalHomePageProps { }
+export interface ProfessionalOrdersPageProps { }
 
-const ProfessionalHomePage: React.FC<ProfessionalHomePageProps> = (props) => {
+const ProfessionalOrdersPage: React.FC<ProfessionalOrdersPageProps> = (props) => {
     const { professional } = useAppSelector(state => state.professinal)
 
     return (
@@ -18,4 +18,4 @@ const ProfessionalHomePage: React.FC<ProfessionalHomePageProps> = (props) => {
     )
 }
 
-export default ProfessionalHomePage;
+export default ProfessionalOrdersPage;

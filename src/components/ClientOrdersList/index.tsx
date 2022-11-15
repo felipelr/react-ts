@@ -1,21 +1,14 @@
 import React from "react";
 import { List, Avatar, ListItem, ListItemAvatar, ListItemButton, ListItemText, Divider, LinearProgress } from "@mui/material";
-import useAppSelector from "../../hooks/useAppSelector";
 import { ItemDescription, ItemTitle, ItemInfo } from "./styles";
 import strings from "./strings";
-import { useClientServiceOrderByClient } from "../../hooks/clientServiceOrder/useClientServiceOrderByClient";
+import { ClientOrders } from "../../services/ClientOrderService";
 
-export interface ClientOrdersProps { }
+export interface ClientOrdersProps { 
+    clientOrders: ClientOrder[]
+}
 
-const ClientOrders: React.FC<ClientOrdersProps> = (props) => {
-    const { client } = useAppSelector(state => state.client);
-    const {clientOrders, loading} = useClientServiceOrderByClient(client?.id)
-
-    if (loading) {
-        return (
-            <LinearProgress color="secondary" />
-        )
-    }
+const ClientOrdersList: React.FC<ClientOrdersProps> = ({clientOrders}) => {
 
     return (
         <List>
@@ -66,4 +59,4 @@ const ClientOrders: React.FC<ClientOrdersProps> = (props) => {
     )
 }
 
-export default ClientOrders;
+export default ClientOrdersList;

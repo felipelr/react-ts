@@ -45,14 +45,6 @@ const Header: React.FC<HeaderProps> = (props) => {
             navigate("/professional");
     }
 
-    const goToClientHome = () => {
-        navigate("/client");
-    }
-
-    const goToProfessionalHome = () => {
-        navigate("/professional");
-    }
-
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
     }
@@ -66,13 +58,21 @@ const Header: React.FC<HeaderProps> = (props) => {
         [
             {
                 name: strings.findProfessional,
-                onClick: goToClientHome
+                onClick: () => navigate("/client")
+            },
+            {
+                name: strings.budgetRequests,
+                onClick: () => navigate("/client/orders")
             },
         ] :
         [
             {
-                name: strings.clientOrders,
-                onClick: goToProfessionalHome
+                name: strings.myProfile,
+                onClick: () => navigate("/professional")
+            },
+            {
+                name: strings.budgetRequests,
+                onClick: () => navigate("/professional/orders")
             },
         ];
 
