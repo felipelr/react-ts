@@ -5,7 +5,7 @@ import strings from "./strings";
 import { ClientOrders } from "../../services/ClientOrderService";
 
 export interface ClientOrdersProps { 
-    clientOrders: ClientOrder[]
+    clientOrders: ClientOrders[]
 }
 
 const ClientOrdersList: React.FC<ClientOrdersProps> = ({clientOrders}) => {
@@ -31,7 +31,7 @@ const ClientOrdersList: React.FC<ClientOrdersProps> = ({clientOrders}) => {
                                                 </ItemTitle>
                                                 <br />
                                                 <ItemDescription>
-                                                    {item.service.title}
+                                                    {item.service?.title}
                                                 </ItemDescription>
                                             </>
                                         }

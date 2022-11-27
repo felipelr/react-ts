@@ -31,6 +31,13 @@ class ClientOrderService extends ApiService {
             method: 'GET'
         })
     }
+    async getByProfessional(token: string, professionalId: number, clientId: number) {
+        return await this.request<ClientOrdersResult>({
+            token,
+            url: `/v1/clientServiceOrders/getByProfessional/${professionalId}?client_id=${clientId}`,
+            method: 'GET'
+        })
+    }
 }
 
 export const clientServiceOrder = new ClientOrderService();
